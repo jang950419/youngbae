@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    generateBtn.addEventListener('click', generateLotto);
+    if (generateBtn) generateBtn.addEventListener('click', generateLotto);
 
     // FAQ 토글 기능
     const faqItems = document.querySelectorAll('.faq-item .question');
@@ -125,12 +125,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactFormWrapper.classList.remove('hidden');
                 showContactBtn.innerHTML = '<i class="fas fa-times"></i> 닫기';
                 showContactBtn.style.backgroundColor = 'var(--secondary-color)';
-                // 폼으로 부드럽게 스크롤
                 contactFormWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 contactFormWrapper.classList.add('hidden');
                 showContactBtn.innerHTML = '<i class="fas fa-envelope"></i> 제휴 문의하기';
                 showContactBtn.style.backgroundColor = 'var(--primary-color)';
+            }
+        });
+    }
+
+    // 테마 전환 (다크/라이트 모드) 기능
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+
+    // 저장된 테마 불러오기
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+            // 아이콘 교체
+            if (isDark) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
             }
         });
     }
