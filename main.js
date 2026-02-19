@@ -114,4 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 제휴 문의 폼 토글 기능
+    const showContactBtn = document.getElementById('show-contact-btn');
+    const contactFormWrapper = document.getElementById('contact-form-wrapper');
+
+    if (showContactBtn && contactFormWrapper) {
+        showContactBtn.addEventListener('click', () => {
+            if (contactFormWrapper.classList.contains('hidden')) {
+                contactFormWrapper.classList.remove('hidden');
+                showContactBtn.innerHTML = '<i class="fas fa-times"></i> 닫기';
+                showContactBtn.style.backgroundColor = 'var(--secondary-color)';
+                // 폼으로 부드럽게 스크롤
+                contactFormWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                contactFormWrapper.classList.add('hidden');
+                showContactBtn.innerHTML = '<i class="fas fa-envelope"></i> 제휴 문의하기';
+                showContactBtn.style.backgroundColor = 'var(--primary-color)';
+            }
+        });
+    }
 });

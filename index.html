@@ -181,6 +181,29 @@
                     </div>
                 </div>
             </section>
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <div class="contact-container">
+                    <h2>🤝 제휴 및 서비스 개선 문의</h2>
+                    <p>비즈니스 파트너십이나 서비스 제안이 있으신가요?<br>아래 버튼을 눌러 메시지를 남겨주시면 정성껏 답변드리겠습니다.</p>
+                    
+                    <button id="show-contact-btn" class="open-form-btn">
+                        <i class="fas fa-envelope"></i> 제휴 문의하기
+                    </button>
+
+                    <div id="contact-form-wrapper" class="contact-form-wrapper hidden">
+                        <form action="https://formspree.io/f/xwvnqpyb" method="POST" id="contact-form">
+                            <input type="hidden" name="_next" value="https://jang950419.github.io/jnag/success.html">
+                            <div class="form-grid">
+                                <input type="text" name="name" placeholder="성함 또는 업체명" required aria-label="성함">
+                                <input type="email" name="_replyto" placeholder="이메일 주소" required aria-label="이메일">
+                            </div>
+                            <textarea name="message" placeholder="문의 내용을 구체적으로 적어주세요." required aria-label="문의 내용"></textarea>
+                            <button type="submit" class="submit-btn">문의 내용 전송하기</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="site-footer">
